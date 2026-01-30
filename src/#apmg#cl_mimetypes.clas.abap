@@ -21,9 +21,15 @@ CLASS /apmg/cl_mimetypes DEFINITION
       RETURNING
         VALUE(result) TYPE i.
 
-    CLASS-METHODS get
+    CLASS-METHODS get_all
       RETURNING
         VALUE(result) TYPE mimetype_list.
+
+    CLASS-METHODS get_extension
+      IMPORTING
+        mimetype      TYPE string
+      RETURNING
+        VALUE(result) TYPE string.
 
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -34,7 +40,7 @@ ENDCLASS.
 CLASS /apmg/cl_mimetypes IMPLEMENTATION.
 
 
-  METHOD get.
+  METHOD get_all.
 
     result = VALUE #(
       (
@@ -2834,9 +2840,18 @@ CLASS /apmg/cl_mimetypes IMPLEMENTATION.
   ENDMETHOD.
 
 
+  METHOD get_extension.
+
+    DATA(mimetypes) = get_all( ).
+
+    result = mimetypes[ type = mimetype ]-extension.
+
+  ENDMETHOD.
+
+
   METHOD init.
 
-    DATA(mimetypes) = get( ).
+    DATA(mimetypes) = get_all( ).
 
     SELECT * FROM mimetypes INTO TABLE @DATA(existing_mimetypes).
 
