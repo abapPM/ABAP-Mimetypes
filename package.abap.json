@@ -1,16 +1,17 @@
 {
-  "name": "{{module}}",
+  "name": "mimetypes",
   "version": "1.0.0",
-  "description": "{{package}}",
+  "description": "Mimetypes",
   "type": "module",
   "keywords": [
     "abap",
     "apm",
-    "module"
+    "module",
+    "mimetypes"
   ],
   "homepage": "https://abappm.com",
   "bugs": {
-    "url": "https://github.com/abapPM/{{repo}}/issues"
+    "url": "https://github.com/abapPM/ABAP-Mimetypes/issues"
   },
   "license": "MIT",
   "author": {
@@ -24,14 +25,11 @@
     }
   ],
   "repository": {
-    "url": "https://github.com/abapPM/{{repo}}"
+    "url": "https://github.com/abapPM/ABAP-Mimetypes"
   },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/abapPM"
-  },
-  "dependencies": {
-    "error": "^1.0.0"
   },
   "engines": {
     "abap": ">=7.50",

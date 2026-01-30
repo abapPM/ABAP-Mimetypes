@@ -8,10 +8,10 @@ and [ISO Date Format](https://www.iso.org/iso-8601-date-and-time-format.html).
 
 See [unreleased changes] for the latest updates.
 
-## Version [1.0.0] - 2025-01-01
+## Version [1.0.0] - 2026-01-30
 
 Initial Release.
 
 
-[unreleased changes]: https://github.com/abapPM/ABAP-XXX/compare/1.0.0...main
-[1.0.0]: https://github.com/abapPM/ABAP-XXX/releases/tag/1.0.0
+[unreleased changes]: https://github.com/abapPM/ABAP-Mimetypes/compare/1.0.0...main
+[1.0.0]: https://github.com/abapPM/ABAP-Mimetypes/releases/tag/1.0.0
