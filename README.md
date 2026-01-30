@@ -12,7 +12,11 @@ NO WARRANTIES, [MIT License](https://github.com/abapPM/ABAP-Mimetypes/blob/main/
 
 ## Usage
 
-Run `/apmg/cl_mimetypes=>init( )' to initialize the table MIMETYPES.  If a mimetype already exists, it remains unchanged.
+| Method        | Description                        |
+|---------------|------------------------------------|
+| get_all       | List of mimetypes with extensions  |
+| get_extension | Comma-separated list of extensions |
+| init          | Update `mimetypes` database table with missing extensions |
 
 ## Prerequisites
 
