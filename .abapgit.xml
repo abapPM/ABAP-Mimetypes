@@ -2,15 +2,21 @@
 <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
  <asx:values>
   <DATA>
+   <NAME>mimetypes</NAME>
    <MASTER_LANGUAGE>E</MASTER_LANGUAGE>
    <STARTING_FOLDER>/src/</STARTING_FOLDER>
    <FOLDER_LOGIC>PREFIX</FOLDER_LOGIC>
+   <IGNORE>
+    <item>!/package.abap.json</item>
+    <item>!/README.md</item>
+   </IGNORE>
    <REQUIREMENTS>
     <item>
      <COMPONENT>SAP_BASIS</COMPONENT>
      <MIN_RELEASE>750</MIN_RELEASE>
     </item>
    </REQUIREMENTS>
+   <VERSION_CONSTANT>/APMG/CL_MIMETYPES=&gt;C_VERSION</VERSION_CONSTANT>
   </DATA>
  </asx:values>
 </asx:abap>

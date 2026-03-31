@@ -1,13 +1,13 @@
 {
   "name": "mimetypes",
   "version": "1.0.0",
-  "description": "Mimetypes",
+  "description": "Collection of Mimetypes",
   "type": "module",
   "keywords": [
     "abap",
     "apm",
-    "module",
-    "mimetypes"
+    "mimetypes",
+    "module"
   ],
   "homepage": "https://abappm.com",
   "bugs": {
