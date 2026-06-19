@@ -2833,8 +2833,7 @@ CLASS /apmg/cl_mimetypes IMPLEMENTATION.
       (
       type      = 'image/ico'
       extension = '*.ico'
-      )
-    ).
+      ) ).
 
   ENDMETHOD.
 
@@ -2850,11 +2849,11 @@ CLASS /apmg/cl_mimetypes IMPLEMENTATION.
 
   METHOD init.
 
-    DATA new_mimetypes TYPE STANDARD TABLE OF mimetypes WITH DEFAULT KEY.
+    DATA new_mimetypes TYPE STANDARD TABLE OF mimetypes WITH KEY type extension.
 
     DATA(all_mimetypes) = get_all( ).
 
-    SELECT * FROM mimetypes INTO TABLE @DATA(existing_mimetypes) ##SUBRC_OK.
+    SELECT type, extension FROM mimetypes INTO TABLE @DATA(existing_mimetypes) ##SUBRC_OK.
 
     LOOP AT all_mimetypes INTO DATA(mimetype).
 
@@ -2866,7 +2865,7 @@ CLASS /apmg/cl_mimetypes IMPLEMENTATION.
     ENDLOOP.
 
     IF dry_run IS NOT INITIAL AND new_mimetypes IS NOT INITIAL.
-      INSERT mimetypes FROM TABLE new_mimetypes ##SUBRC_OK.
+      INSERT mimetypes FROM TABLE @new_mimetypes ##SUBRC_OK.
     ENDIF.
 
   ENDMETHOD.
