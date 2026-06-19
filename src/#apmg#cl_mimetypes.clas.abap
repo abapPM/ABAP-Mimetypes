@@ -13,7 +13,7 @@ CLASS /apmg/cl_mimetypes DEFINITION
 
     CONSTANTS c_version TYPE string VALUE '1.0.0' ##NEEDED.
 
-    TYPES mimetype_list TYPE SORTED TABLE OF mimetypes WITH UNIQUE KEY type.
+    TYPES ty_mimetype_list TYPE SORTED TABLE OF mimetypes WITH UNIQUE KEY type.
 
     CLASS-METHODS init
       IMPORTING
@@ -23,14 +23,13 @@ CLASS /apmg/cl_mimetypes DEFINITION
 
     CLASS-METHODS get_all
       RETURNING
-        VALUE(result) TYPE mimetype_list.
+        VALUE(result) TYPE ty_mimetype_list.
 
     CLASS-METHODS get_extension
       IMPORTING
         mimetype      TYPE string
       RETURNING
         VALUE(result) TYPE string.
-
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -2851,20 +2850,24 @@ CLASS /apmg/cl_mimetypes IMPLEMENTATION.
 
   METHOD init.
 
-    DATA(mimetypes) = get_all( ).
+    DATA new_mimetypes TYPE STANDARD TABLE OF mimetypes WITH DEFAULT KEY.
 
-    SELECT * FROM mimetypes INTO TABLE @DATA(existing_mimetypes).
+    DATA(all_mimetypes) = get_all( ).
 
-    LOOP AT mimetypes INTO DATA(mimetype).
+    SELECT * FROM mimetypes INTO TABLE @DATA(existing_mimetypes) ##SUBRC_OK.
+
+    LOOP AT all_mimetypes INTO DATA(mimetype).
 
       IF NOT line_exists( existing_mimetypes[ type = mimetype-type ] ).
-        IF dry_run IS INITIAL.
-          INSERT mimetypes FROM mimetype.
-        ENDIF.
+        APPEND mimetype TO new_mimetypes.
         result = result + 1.
       ENDIF.
 
     ENDLOOP.
+
+    IF dry_run IS NOT INITIAL AND new_mimetypes IS NOT INITIAL.
+      INSERT mimetypes FROM TABLE new_mimetypes ##SUBRC_OK.
+    ENDIF.
 
   ENDMETHOD.
 ENDCLASS.
